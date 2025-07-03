@@ -20,10 +20,15 @@ public class StringCalculatorTest {
         assertEquals(30,calc.add("  10,20  "));
     }
     @Test
-    public void Any_Amount_Of_Number_String_Should_Return_Sum_Of_All_Those_Number(){
+    public void test_Any_Amount_Of_Number_String_Should_Return_Sum_Of_All_Those_Number(){
         assertEquals(12,calc.add("6,4,2"));
         assertEquals(24,calc.add("6,4,9,1,4"));
-        assertEquals(19, calc.add("1,2,4,1,2,3,2,4 "));
+        assertEquals(37, calc.add("1,20,4,1,2,3,2,4 "));
     }
+    @Test
+    public void  test_NewLines_ShouldAlsoBeTreatedasDelimeter(){
+        assertEquals(6,calc.add("1\\n2,3"));
+    }
+
 
 }
