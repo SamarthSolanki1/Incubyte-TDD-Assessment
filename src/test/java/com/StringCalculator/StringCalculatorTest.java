@@ -29,6 +29,11 @@ public class StringCalculatorTest {
     public void  test_NewLines_ShouldAlsoBeTreatedasDelimeter(){
         assertEquals(6,calc.add("1\n2,3"));
     }
+    @Test
+    public void test_Given_Different_Delimeter_Shouldwork(){
+        assertEquals(3,calc.add("//;\n1;2"));
+    }
+
 
 
 }
