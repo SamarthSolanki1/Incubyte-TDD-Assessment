@@ -33,6 +33,10 @@ public class StringCalculatorTest {
     public void test_Given_Different_Delimeter_Shouldwork(){
         assertEquals(3,calc.add("//;\n1;2"));
     }
+    @Test
+    public void test_Negative_Number_Should_throw_exception(){
+        assertThrows(IllegalArgumentException.class,()-> calc.add("3,4,-8"),"Negatives are Not allowed");
+    }
 
 
 
