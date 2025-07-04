@@ -33,9 +33,14 @@ public class StringCalculatorTest {
     public void test_Negative_Number_Should_throw_exception(){
         IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
                 () -> calc.add("3,4,-8"));
-
         assertEquals("Negatives are Not allowed: -8", thrown.getMessage());
     }
+    @Test
+    public void test_Numbers_Above_1000_Should_be_Ignored(){
+        assertEquals(5,calc.add("1001,2,3"));
+    }
+
+
 
 
 
