@@ -13,12 +13,23 @@ public class StringCalculator {
 
         if (numbers.startsWith("//")) {
             int delimiterEndIndex = numbers.indexOf("\n");
-            String customDelimiterSection = numbers.substring(2, delimiterEndIndex);
-            if (customDelimiterSection.startsWith("[") && customDelimiterSection.endsWith("]")) {
-                String customDelimiter = customDelimiterSection.substring(1, customDelimiterSection.length() - 1);
-                delimiter = Pattern.quote(customDelimiter);
+            String delimiterSection = numbers.substring(2, delimiterEndIndex);
+            if(delimiterSection.contains("[") && delimiterSection.contains("]")) {
+                List<String> delimiters = new ArrayList<>();
+                int i = 0;
+                while (i < delimiterSection.length()) {
+                    if (delimiterSection.charAt(i) == '[') {
+                        int closeIndex = delimiterSection.indexOf(']', i);
+                        String delim = delimiterSection.substring(i + 1, closeIndex);
+                        delimiters.add(Pattern.quote(delim));
+                        i = closeIndex + 1;
+                    } else {
+                        i++;
+                    }
+                }
+                delimiter = String.join("|", delimiters);
             } else {
-                delimiter = Pattern.quote(customDelimiterSection);
+                delimiter = Pattern.quote(delimiterSection);
             }
             numbers = numbers.substring(delimiterEndIndex + 1);
         }

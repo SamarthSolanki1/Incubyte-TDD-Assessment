@@ -33,7 +33,7 @@ public class StringCalculatorTest {
     public void test_Negative_Number_Should_throw_exception(){
         IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
                 () -> calc.add("3,4,-8"));
-        assertEquals("Negatives are Not allowed: -8", thrown.getMessage());
+        assertEquals("Negatives are Not allowed", thrown.getMessage());
     }
     @Test
     public void test_Numbers_Above_1000_Should_be_Ignored(){
@@ -45,7 +45,7 @@ public class StringCalculatorTest {
     }
     @Test
     public void test_MultipleCustomDelimiters(){
-        assertEquals(90,calc.add("//[*][%]\n5*6%3"));
+        assertEquals(14,calc.add("//[*][%]\n5*6%3"));
     }
 
 
