@@ -39,6 +39,10 @@ public class StringCalculatorTest {
     public void test_Numbers_Above_1000_Should_be_Ignored(){
         assertEquals(5,calc.add("1001,2,3"));
     }
+    @Test
+    public void test_Custom_Delimiter_Any_Length() {
+        assertEquals(6, calc.add("//[***]\n1***2***3"));
+    }
 
 
 
