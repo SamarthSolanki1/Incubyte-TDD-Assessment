@@ -41,7 +41,7 @@ public class StringCalculatorTest {
     }
     @Test
     public void test_Custom_Delimiter_Any_Length() {
-        assertEquals(6, calc.add("//[***]\n1***2***3"));
+        assertEquals(6, calc.add("//[*******************]\n1*******************2*******************3"));
     }
 
 
