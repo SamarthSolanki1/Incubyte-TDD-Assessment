@@ -38,6 +38,7 @@ public class StringCalculator {
         List<Integer> negatives = new ArrayList<>();
 
         for (String part : parts) {
+            if (part.trim().isEmpty()) continue;
             int num = Integer.parseInt(part.trim());
             if (num < 0) {
                 negatives.add(num);
@@ -48,9 +49,10 @@ public class StringCalculator {
         }
 
         if (!negatives.isEmpty()) {
-            throw new IllegalArgumentException("Negatives are Not allowed" +
+            throw new IllegalArgumentException("Negatives are Not allowed: " +
                     negatives.stream().map(String::valueOf).collect(Collectors.joining(", ")));
         }
+
 
         return sum;
     }

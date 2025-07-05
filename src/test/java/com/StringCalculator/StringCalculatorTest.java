@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class StringCalculatorTest {
-    StringCalculator calc = new StringCalculator();
+    private final StringCalculator calc = new StringCalculator();
     @Test
     void test_Empty_String_Should_Return_Zero(){
         assertEquals(0,calc.add(""));
@@ -30,10 +30,13 @@ public class StringCalculatorTest {
         assertEquals(6,calc.add("1\n2, 3"));
     }
     @Test
-    public void test_Negative_Number_Should_throw_exception(){
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class,
-                () -> calc.add("3,4,-8"));
-        assertEquals("Negatives are Not allowed", thrown.getMessage());
+    public void testNegativeNumbersShouldThrowException() {
+        IllegalArgumentException thrown = assertThrows(
+                IllegalArgumentException.class,
+                () -> calc.add("2,-4,3,-7")
+        );
+
+        assertEquals("Negatives are Not allowed: -4, -7", thrown.getMessage());
     }
     @Test
     public void test_Numbers_Above_1000_Should_be_Ignored(){
@@ -47,6 +50,10 @@ public class StringCalculatorTest {
     public void test_MultipleCustomDelimiters(){
         assertEquals(14,calc.add("//[*][%]\n5*6%3"));
         assertEquals(8,calc.add("//[***][;;][+++++]\n1***2+++++4;;1"));
+    }
+    @Test
+    public void test_Trailing_Delimiters_Are_Handled() {
+        assertEquals(6, calc.add("1,2,3,"));
     }
 
 
