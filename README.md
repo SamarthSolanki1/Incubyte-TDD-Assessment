@@ -33,7 +33,7 @@ The method can take up to two numbers, separated by commas, and will return thei
 - **Language**: Java 17+
 - **Testing Framework**: JUnit 5
 - **Build Tool**: Maven
-- **IDE**: IntelliJ IDEA / Eclipse (recommended)
+- **IDE**: IntelliJ IDEA 
 
 ---
 
